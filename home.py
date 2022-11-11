@@ -1,15 +1,12 @@
 import os
 from flask import Flask, flash, request, redirect, render_template, send_from_directory
 from flask import Flask
-from flask.ext.hashing import Hashing
-
-
+import hashlib
 
 UPLOAD_FOLDER = '.\image'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
-hashing = Hashing(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and \
@@ -19,13 +16,14 @@ def allowed_file(filename):
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
-        print(request.files)
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        filename_hash = hashing.hash_value(file, salt='abcd')
-
+        #filename_hash='img1.png'
+        split_tup = os.path.splitext(file.filename)
+        filename_hash = hashlib.sha256(file.read()).hexdigest()+split_tup[1]
+        file.seek(0)
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         
