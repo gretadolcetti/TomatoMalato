@@ -17,7 +17,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+           filename.rsplit('.')[-1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -29,6 +29,7 @@ def upload_file():
             return render_template('index.html')
         
         if file and allowed_file(file.filename):
+            # Save image in the uploads folder
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
             risultato = random.choice(["sana", "affetta da A", "affetta da B", "affetta da C"])
             return render_template('index.html', name=os.path.join(app.config['UPLOAD_FOLDER'], file.filename), risultato=risultato)
