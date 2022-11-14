@@ -29,21 +29,30 @@ def upload_file():
             flash('Nessun file selezionato')
             return render_template('index.html')
         
-        images_hash = open(os.path.join(".","static","uploads","images_hash.json")).read()
-        images_hash = json.loads(images_hash)
-
+        uploads_folder_path = os.path.join(".","static","uploads")
+        if not os.path.exists(uploads_folder_path):
+            os.mkdir(uploads_folder_path)
+        if not os.path.exists(os.path.join(uploads_folder_path,"images_hash.json")):
+            open(os.path.join(uploads_folder_path,"images_hash.json"), 'x')
+            images_hash = {}
+        else:
+            images_hash_file = open(os.path.join(uploads_folder_path,"images_hash.json"), 'r')
+            images_hash = images_hash_file.read()
+            images_hash = json.loads(images_hash)
+        split_tup = os.path.splitext(file.filename)
         img_key = hashlib.md5(file.read()).hexdigest()
+        img_name = img_key+split_tup[1]
         file.seek(0)
 
         if file and allowed_file(file.filename):
             # Save image in the uploads folder if it is not already present
             if img_key not in images_hash:
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], img_key))
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
                 images_hash[img_key] = file.filename
-                with open(os.path.join(".","static","uploads","images_hash.json"), "w") as f:
+                with open(os.path.join(uploads_folder_path,"images_hash.json"), "w") as f:
                     f.write(json.dumps(images_hash))
             risultato = random.choice(["sana", "affetta da A", "affetta da B", "affetta da C"])
-            return render_template('index.html', name=os.path.join(app.config['UPLOAD_FOLDER'], file.filename), risultato=risultato)
+            return render_template('index.html', name=os.path.join(app.config['UPLOAD_FOLDER'], img_name), risultato=risultato)
         elif file and not allowed_file(file.filename):
             flash('Estensione non ammessa')
             return render_template('index.html')
