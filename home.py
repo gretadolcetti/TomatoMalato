@@ -20,6 +20,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.')[-1].lower() in ALLOWED_EXTENSIONS
 
+
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -27,7 +28,7 @@ def upload_file():
         file = request.files['file']
         if file.filename == '':
             flash('Nessun file selezionato')
-            return render_template('index.html')
+            return render_template('upload.html')
         
         uploads_folder_path = os.path.join(".","static","uploads")
         if not os.path.exists(uploads_folder_path):
@@ -52,8 +53,9 @@ def upload_file():
                 with open(os.path.join(uploads_folder_path,"images_hash.json"), "w") as f:
                     f.write(json.dumps(images_hash))
             risultato = random.choice(["sana", "affetta da A", "affetta da B", "affetta da C"])
-            return render_template('index.html', name=os.path.join(app.config['UPLOAD_FOLDER'], img_name), risultato=risultato)
+            return render_template('upload.html', name=os.path.join(app.config['UPLOAD_FOLDER'], img_name), risultato=risultato)
         elif file and not allowed_file(file.filename):
             flash('Estensione non ammessa')
-            return render_template('index.html')
-    return render_template('index.html')
+            return render_template('upload.html')
+    else:
+         return render_template('upload.html')

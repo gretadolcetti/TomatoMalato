@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- My css -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename= 'style.css') }}">
+  </body>
+
+    <title>TomatoMalato</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Tomato Malato</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Information</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+     <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+        Launch demo modal
+    </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Types of tomato diseases</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div>
+    <h1 class = "display-1" id="title">Tomato Malato</h1>
+</div>
+    <div class="px-4 py-5 my-5 text-center" id="div_all">
+        <h1 style = "margin-bottom:2rem;" class="display-5 fw-bold">Carica l'immagine delle foglie della pianta</h1>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <form method=post enctype=multipart/form-data>
+                <input type=file name=file accept=".png, .jpg, .jpeg">
+                <button type=submit>Upload</button>
+            </form>
+        </div>
+
+        {% with message = get_flashed_messages() %}
+        {% if message %}
+            <ul class=flashes>
+            <script>
+                alert("{{ message }}");
+            </script>
+            </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% if name %}
+        <div class="overflow-hidden" style="margin-top: 3rem;">
+            <div class="container px-5">
+                <h3>L'immagine contiene una pianta {{risultato}}</h3>
+                <img src="{{name}}" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>

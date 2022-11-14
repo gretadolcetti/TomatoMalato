@@ -1,28 +1,15 @@
-
-* {
-    color: black;
-    font-family: "Helvetica", "Arial", sans-serif;
-    border-spacing: 15px;
+.bg-dark {
+    background-color: #800102!important;
 }
 
-option{
-    color: #9b2335;
-
+#title{
+    color: #800102!important;
+    text-align: center;
+    font-family: "Lucida Console";
 }
 
-button{
-    color: #9b2335;
-    font-family: "Helvetica", "Arial", sans-serif;
-    background: #ffffff;
-    border: 1.5px solid #494949;
-    display: inline-block;
-    transition: all 0.4s ease 0s;
-    vertical-align: top;
-}
-
-button:hover {
-    color: #ffffff;
-    background: #9b2335;
-    border-color: #9b2335;
-    transition: all 0.4s ease 0s;
+body{
+    background-image: url("img/pomodori.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
