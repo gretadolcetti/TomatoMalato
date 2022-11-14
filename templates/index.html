@@ -1,16 +1,42 @@
 <!doctype html>
-<title>Tomato Malato</title>
+<html lang="en">
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename= 'style.css') }}">
+<head>
+
+<title>TomatoMalato</title>
+
+{% with message = get_flashed_messages() %}
+  {% if message %}
+    <ul class=flashes>
+    <script>
+        alert("{{ message }}");
+    </script>
+    </ul>
+  {% endif %}
+{% endwith %}
+
 {% if name %}
-    <h1>Tomato Malato</h1>
+
+    <h1>Carica l'immagine delle foglie della pianta</h1>
     <form method=post enctype=multipart/form-data>
         <input type=file name=file>
-        <input type=submit value=Upload>
+        <br></br>
+        <button type=submit>Upload</button>
     </form>
-    <img src="{{name}}">
+    <br></br>
+    <img src="{{name}}" style= "max-width: 90%">
+    <h2>L'immagine contiene una pianta {{risultato}}</h2>
+
 {% else %}
-    <h1>Tomato Malato</h1>
+
+    <h1>Carica l'immagine delle foglie della pianta</h1>
     <form method=post enctype=multipart/form-data>
-        <input type=file name=file>
-        <input type=submit value=Upload>
+        <input type=file name=file
+        accept=".png, .jpg, .jpeg">
+        <br></br>
+        <button type=submit>Upload</button>
     </form>
+    <br></br>
+
 {% endif %}
