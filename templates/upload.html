@@ -19,8 +19,14 @@
 
     <!-- My css -->
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename= 'style.css') }}">
-  </body>
 
+    <script>
+      function closeModal(id) {
+        id.style.display = 'none';
+        id.style.opacity = '0';
+      }
+    </script>
+    
     <title>TomatoMalato</title>
 </head>
 <body>
@@ -65,7 +71,6 @@
     </div>
   </div>
 
-
 <div>
     <h1 class = "display-1" id="title">Tomato Malato</h1>
 </div>
@@ -89,12 +94,33 @@
         {% endwith %}
 
         {% if name %}
+
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display:block; opacity:1;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" onclick="closeModal(document.getElementById('exampleModalCenter'))">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
         <div class="overflow-hidden" style="margin-top: 3rem;">
-            <div class="container px-5">
-                <h3>L'immagine contiene una pianta {{risultato}}</h3>
-                <img src="{{name}}" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
-            </div>
+          <div class="container px-5">
+              <h3>L'immagine contiene una pianta {{risultato}}</h3>
+              <img src="{{name}}" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+          </div>
         </div>
-        {% endif %}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal(document.getElementById('exampleModalCenter'))">Close</button>
+      </div>
     </div>
+  </div>
+</div>
+        {% endif %}
+</div>
 </body>
