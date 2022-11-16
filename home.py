@@ -1,5 +1,5 @@
 import os
-from flask import Flask, flash, request, redirect, render_template, send_from_directory
+from flask import Flask, flash, request, render_template, send_from_directory
 from flask import Flask
 import random
 import json
@@ -20,6 +20,11 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.')[-1].lower() in ALLOWED_EXTENSIONS
 
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
