@@ -8,8 +8,34 @@
     font-family: "Lucida Console";
 }
 
-body{
+header{
+    background-color: #800102;
+}
+
+.pb-1, .py-1 {
+    padding-bottom: 0px!important;
+}
+
+.pt-1, .py-1 {
+    padding-top: 0px!important;
+}
+
+.mb-4, .my-4 {
+    margin-bottom: 0px!important;
+}
+
+.m-md-3 {
+    margin: 0px!important;
+}
+
+main{
+    height: 100vh;
+}
+
+#insert{
     background-image: url("img/pomodori.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    position:fixed;
+    height: 100%;
 }
