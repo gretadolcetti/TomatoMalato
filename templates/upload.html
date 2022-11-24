@@ -34,20 +34,37 @@
 
 
   <header class="site-header sticky-top py-1">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Tomato Malato</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <a class="nav-link" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Information</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+  <!-- <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="/" aria-label="Product">
+      <img src="favicon.ico" style="width: 30px; height:30px; align-items: center;">
+    </a>
+    <a class="py-2" href="/" aria-label="Product" id="btn-nav">
+      <h4>Tomato Malato</h4>
+    </a>
+    <a class="py-2 d-none d-md-inline-block" href="#disease" id="btn-nav">Informazioni</a>
+  </nav> -->
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/" id="btn-nav">Tomato Malato</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/" id="btn-nav">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#insert" id="btn-nav">Inserire immagine</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#disease" id="btn-nav">Informazioni malattie</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   </header>
@@ -61,13 +78,112 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Types of tomato diseases</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Tipi di malattie dei pomodori</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          
+
+          <div class="row">
+            
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Macchia fogliare batterica</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+           
+           
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Peronospora precoce</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+            
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Peronospora tardiva</h2>
+              <p></p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+            
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Muffa delle foglie</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+           
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Muffa polverosa</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+             
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Macchia fogliare della Septoria</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+             
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Ragnetto rosso</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+             
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Macchia target</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+             
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Virus del mosaico</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+             
+            
+            <div class="col-lg-4">
+              <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+      
+              <h2>Virus dell'arricciamento fogliare giallo</h2>
+              <p>...</p>
+              <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div><!-- /.col-lg-4 -->
+
+          
+          </div>
+
+
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -77,7 +193,7 @@
   </div>
 
   
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="insert">
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="insert">
 
 <div>
     <h1 class = "display-1" id="title">Tomato Malato</h1>
@@ -133,6 +249,518 @@
 </div>
 
 </div>
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="disease">
+
+  <h2>Tipi di malattie che possono colpire i pomodori</h2>
+  <div class="row">
+            
+            
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Bacterial_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Macchia fogliare batterica</h2>
+      <p><a class="btn btn-secondary" href="#d1">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+   
+   
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Early_blight.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Peronospora precoce</h2>
+      <p><a class="btn btn-secondary" href="#d2">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+    
+    
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Late_blight.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Peronospora tardiva</h2>
+      <p><a class="btn btn-secondary" href="#d3">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+    
+    
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Leaf_Mold.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Muffa delle foglie</h2>
+      <p><a class="btn btn-secondary" href="#d4">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+   
+    
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/powdery_mildew.jpg" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Muffa polverosa</h2>
+      <p><a class="btn btn-secondary" href="#d5">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+     
+    
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Septoria_leaf_spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Macchia fogliare della Septoria</h2>
+      <p><a class="btn btn-secondary" href="#d6">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+     
+    
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Spider_mites Two-spotted_spider_mite.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Ragnetto rosso</h2>
+      <p><a class="btn btn-secondary" href="#d7">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+     
+    
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Target_Spot.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Macchia target</h2>
+      <p><a class="btn btn-secondary" href="#d8">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+     
+    
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Tomato_mosaic_virus.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Virus del mosaico</h2>
+      <p><a class="btn btn-secondary" href="#d9">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+     
+    
+    <div class="col-lg-4">
+      <img src="../static/Info_Images/Tomato_Yellow_Leaf_Curl_Virus.JPG" class="bd-placeholder-img rounded-circle" width="140" height="140">
+
+      <h2>Virus dell'arricciamento fogliare giallo</h2>
+      <p><a class="btn btn-secondary" href="#d10">Vedi dettagli</a></p>
+    </div><!-- /.col-lg-4 -->
+
+  
+  </div>
+
+</div>
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d1">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Macchia fogliare batterica</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+            <li>Il clima umido e le piogge a pioggia favoriscono lo sviluppo della malattia. La maggior parte dei focolai della malattia può essere ricondotta ai forti temporali che si verificano nella zona.</li>
+            <li>Le foglie infette presentano piccole macchie circolari brune, impregnate d'acqua e circondate da un alone giallastro.</li>
+            <li>Sulle piante più vecchie l'infezione fogliare riguarda soprattutto le foglie più vecchie e può causare gravi defogliazioni.</li>
+            <li>I sintomi più evidenti si manifestano sui frutti verdi. All'inizio compaiono piccole macchie imbevute d'acqua, che in seguito si sollevano e si ingrandiscono fino a raggiungere un diametro di un ottavo o un quarto di pollice.</li>
+            <li>I centri di queste lesioni diventano irregolari, di colore marrone chiaro e leggermente infossati, con una superficie ruvida e scabbiosa.</li>
+            <li>I frutti maturi non sono sensibili alla malattia. La superficie del seme si contamina con il batterio, che rimane sulla superficie del seme per qualche tempo.</li>
+            <li>L'organismo sopravvive in ospiti alternativi, su piante di pomodoro volontarie e su detriti vegetali infetti.</li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: le cellule batteriche sopravvivono su detriti vegetali e semi infetti (sia internamente che esternamente) e anche su piante infestanti solanacee come Solanum nigrum.</li>
+            <li>Secondaria: le cellule batteriche si trasmettono attraverso gli spruzzi di pioggia.</li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li>Tempo umido e piogge a spruzzo</li>
+            <li>Elevata umidità o rugiada persistente.</li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Bacterial_spot.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d2">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Peronospora precoce</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li>È una malattia comune del pomodoro che si manifesta sul fogliame in qualsiasi fase della crescita.</li>
+              <li>Il fungo attacca il fogliame causando le caratteristiche macchie fogliari e la peronospora. La peronospora precoce si osserva per la prima volta sulle piante come piccole lesioni nere, per lo più sul fogliame più vecchio.</li>
+              <li>Le macchie si ingrandiscono e quando raggiungono un diametro di un quarto di pollice o più, al centro dell'area malata si notano anelli concentrici a forma di occhio di bue.</li>
+              <li>Il tessuto che circonda le macchie può ingiallire. Se in questo periodo si verificano temperature e umidità elevate, gran parte del fogliame viene ucciso.</li>
+              <li>Le lesioni sui fusti sono simili a quelle sulle foglie e a volte avvolgono la pianta se si verificano vicino alla linea del suolo.</li>
+              <li>I trapianti infettati dal fungo della peronospora tardiva spesso muoiono quando vengono messi in campo. Il fungo infetta anche i frutti, generalmente attraverso il calice o l'attaccatura dello stelo.</li>
+              <li>Le lesioni raggiungono dimensioni considerevoli, di solito coinvolgono quasi tutto il frutto; sul frutto sono presenti anche anelli concentrici.</li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: il fungo trascorre l'inverno in detriti vegetali infetti all'interno o sul terreno, dove può sopravvivere per almeno uno e forse più anni. Può anche essere trasportato dai semi.</li>
+            <li>Secondaria: le spore sono trasportate da acqua, vento, insetti, altri animali, compreso l'uomo, e macchinari. Una volta che le infezioni iniziali si sono verificate, diventano la fonte più importante di produzione di nuove spore e sono responsabili della rapida diffusione della malattia.</li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li>Clima caldo, piovoso e umido</li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Early_blight.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d3">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Peronospora tardiva</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi e danno</li>
+          <ul>
+            <li>La peronospora tardiva è una malattia potenzialmente grave della patata e del pomodoro ed è causata dall'agente patogeno Phytophthora infestans. 
+            <li>La peronospora tardiva è particolarmente dannosa quando il tempo è fresco e umido. </li>
+            <li>Questo patogeno può colpire tutte le parti della pianta. </li>
+            <li>Le lesioni delle foglie giovani sono piccole e si presentano come macchie scure e impregnate d'acqua. </li>
+            <li>Queste macchie fogliari si allargano rapidamente e ai margini dell'area colpita compare una muffa bianca sulla superficie inferiore delle foglie. </li>
+            <li>La defogliazione completa (imbrunimento e raggrinzimento di foglie e steli) può avvenire entro 14 giorni dai primi sintomi. </li>
+            <li>I frutti di pomodoro infetti sviluppano lesioni lucide, scure o color oliva, che possono coprire ampie aree. </li>
+            <li>Le spore fungine si diffondono tra le piante e i giardini con la pioggia e il vento.</li>
+            <li>Una combinazione di temperature diurne superiori ai 70° C e di umidità elevata è ideale per l'infezione. </li></li>
+          </ul>
+          <li>Prevenzione e trattamento: <br>
+            <ul>
+              <li>Mantenere il fogliame asciutto. Posizionare il giardino in modo che riceva il sole del mattino.</li>
+              <li>Lasciate un po' di spazio tra le piante ed evitate di annaffiare dall'alto, soprattutto in tarda mattinata.</li>
+              <li>Acquistate semi e piante certificate esenti dalla malattia.</li>
+              <li>Distruggete le piante di pomodoro e di patata spontanee e le piante infestanti della famiglia della belladonna, come il cavallino della Carolina o la belladonna nera, che possono ospitare il fungo.</li>
+              <li>Non compostate le patate marce acquistate in negozio.</li>
+              <li>Estraete e distruggete le piante malate.</li>
+              <li>Se la malattia è abbastanza grave da giustificare un controllo chimico, scegliete uno dei seguenti fungicidi: clorotalonil (molto buono), fungicida a base di rame o mancozeb (buono). Vedere la Tabella 1 per esempi di prodotti fungicidi per uso domestico. Seguite le indicazioni riportate sull'etichetta.</li>
+              <li>Piantare cultivar resistenti.</li>
+            </ul>
+          </li>
+        </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Late_blight.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d4">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Muffa delle foglie</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: </li>
+            <li>Secondaria: </li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Leaf_Mold.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d5">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Muffa polverosa</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: </li>
+            <li>Secondaria: </li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/powdery_mildew.jpg">
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d6">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Macchia fogliare della Septoria</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: </li>
+            <li>Secondaria: </li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Septoria_leaf_spot.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d7">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Ragnetto rosso</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: </li>
+            <li>Secondaria: </li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Spider_mites Two-spotted_spider_mite.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d8">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Macchia target</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: </li>
+            <li>Secondaria: </li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Target_Spot.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d9">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Virus del mosaico</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: </li>
+            <li>Secondaria: </li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Tomato_mosaic_virus.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+<hr class="featurette-divider">
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="d10">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"> <span class="text-muted">Virus dell'arricciamento fogliare giallo</span></h2>
+      <p class="lead">
+        <ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+        <li>Sopravvivenza e diffusione: <br>
+          <ul>
+            <li>Primaria: </li>
+            <li>Secondaria: </li>
+          </ul>
+        </li>
+        
+        <li>Condizioni favorevoli: <br>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img src="../static/Info_Images/Tomato_Yellow_Leaf_Curl_Virus.JPG">
+    </div>
+  </div>
+
+
+</div>
+
+
+
 </main>
 <!-- Footer -->
 <footer class="container py-5">

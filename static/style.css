@@ -12,6 +12,10 @@ header{
     background-color: #800102;
 }
 
+.navbar {
+    background-color: #800102!important;
+}
+
 .pb-1, .py-1 {
     padding-bottom: 0px!important;
 }
@@ -29,7 +33,7 @@ header{
 }
 
 main{
-    height: 100vh;
+    height: max-content;
 }
 
 #insert{
@@ -37,5 +41,33 @@ main{
     background-repeat: no-repeat;
     background-size: cover;
     position:fixed;
-    height: 100%;
+    height: 100vh;
+}
+
+.modal-dialog {
+    max-width: 80%;
+    margin: 1.75rem auto;
+}
+
+.p-md-5 {
+    padding: 5rem!important;
+}
+
+.col-md-7 {
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+    text-align: left;
+}
+
+.col-lg-4 {
+    flex: 0 0 33,333333%;
+    max-width: 33,333333%;
+    margin-top: 60px;
+}
+
+#btn-nav{
+    color:aliceblue;
+    text-decoration: none;
+    background-color: transparent;
 }
