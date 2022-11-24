@@ -71,3 +71,9 @@ main{
     text-decoration: none;
     background-color: transparent;
 }
+
+#footer {
+    max-width: 100vw;
+    background-color: #800102;
+    padding: 10%;
+}
