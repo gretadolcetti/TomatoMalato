@@ -1,4 +1,5 @@
 **/*Icon
 __pycache__/*
+*.pyc
 Dataset/
 static/uploads/*
