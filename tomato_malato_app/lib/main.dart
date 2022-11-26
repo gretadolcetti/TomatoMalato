@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           appBar: null,
           body: MyWebView(
-                    title: "DigitalOcean",
+                    title: "Tomato Malato",
                     selectedUrl: "http://10.0.2.2:5000",
         )
         )
