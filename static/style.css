@@ -6,7 +6,17 @@
     color: #800102!important;
     text-align: center;
     font-family: "Lucida Console";
+    font-size: max(11vw, 50px);
 }
+
+#text_load_image{
+    font-size: max(4vw, 20px);
+}
+
+h2{
+    font-size: max(3vw, 20px);
+}
+
 
 header{
     background-color: #800102;
@@ -50,13 +60,13 @@ main{
 }
 
 .p-md-5 {
-    padding: 5rem!important;
+    padding: 3rem!important;
 }
 
 .col-md-7 {
     -ms-flex: 0 0 58.333333%;
-    flex: 0 0 58.333333%;
-    max-width: 58.333333%;
+    flex: 58%;
+    max-width: 100%;
     text-align: left;
 }
 
