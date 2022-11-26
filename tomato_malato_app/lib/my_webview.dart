@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
+import 'package:flutter_webview_pro/webview_flutter.dart';
 
 class MyWebView extends StatelessWidget {
   final String title;
@@ -16,9 +16,6 @@ class MyWebView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: WebView(
         initialUrl: selectedUrl,
         javascriptMode: JavascriptMode.unrestricted,
