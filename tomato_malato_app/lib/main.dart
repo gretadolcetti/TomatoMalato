@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'my_webview.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           appBar: null,
-          body: HomePage(),
+          body: MyWebView(
+                    title: "DigitalOcean",
+                    selectedUrl: "http://10.0.2.2:5000",
+        )
         )
       )
     );
