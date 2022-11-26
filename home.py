@@ -1,9 +1,10 @@
 import os
-from flask import Flask, flash, request, render_template, send_from_directory
+from flask import Flask, flash, request, render_template, send_from_directory, redirect, url_for
 from flask import Flask
 import random
 import json
 import hashlib
+from flask_login import *
 
 # UPLOAD_FOLDER: where to save the uploaded files (temporarily?)
 UPLOAD_FOLDER = os.path.join(".","static","uploads")
@@ -16,6 +17,60 @@ app = Flask(__name__, static_url_path='/static')
 app.secret_key = "super secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+# Our mock database.
+users = {'tomato@malato.it': {'password': 'password'}}
+
+class User(UserMixin):
+    pass 
+
+
+@login_manager.user_loader
+def user_loader(email):
+    if email not in users:
+        return
+
+    user = User()
+    user.id = email
+    return user
+
+
+@login_manager.request_loader
+def request_loader(request):
+    email = request.form.get('email')
+    if email not in users:
+        return
+
+    user = User()
+    user.id = email
+    return user
+
+
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+
+    email = request.form['email']
+    if email in users and request.form['password'] == users[email]['password']:
+        user = User()
+        user.id = email
+        login_user(user)
+        return redirect('/home')
+
+    return render_template('login.html', res='bad')
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/')
+
+
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.')[-1].lower() in ALLOWED_EXTENSIONS
@@ -26,7 +81,7 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
