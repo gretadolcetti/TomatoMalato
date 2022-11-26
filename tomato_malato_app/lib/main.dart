@@ -14,7 +14,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: SafeArea(
+        child: Scaffold(
+          appBar: null,
+          body: HomePage(),
+        )
+      )
     );
   }
 }

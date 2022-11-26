@@ -15,13 +15,16 @@ class MyWebView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
       body: WebView(
         initialUrl: selectedUrl,
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (WebViewController webViewController) {
           _controller.complete(webViewController);
         },
-      ));
+      )
+      ),
+      );
   }
 }
