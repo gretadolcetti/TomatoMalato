@@ -1,2 +1,2 @@
-# TomatoMalato-
-ML WebApp for tomato diseases prediction 
+# TomatoMalato
+ML WebApp for tomato diseases prediction

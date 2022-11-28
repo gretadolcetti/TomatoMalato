@@ -24,7 +24,7 @@ login_manager.init_app(app)
 users = {'tomato@malato.it': {'password': 'password'}}
 
 class User(UserMixin):
-    pass 
+    pass
 
 
 @login_manager.user_loader
@@ -89,7 +89,7 @@ def upload_file():
         if file.filename == '':
             flash('Nessun file selezionato')
             return render_template('upload.html')
-        
+
         uploads_folder_path = os.path.join(".","static","uploads")
         if not os.path.exists(uploads_folder_path):
             os.mkdir(uploads_folder_path)
