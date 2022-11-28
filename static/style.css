@@ -6,15 +6,22 @@
     color: #800102!important;
     text-align: center;
     font-family: "Lucida Console";
-    font-size: max(11vw, 50px);
+    font-size: max(min(14vh, 14vw),50px);
 }
 
 #text_load_image{
-    font-size: max(4vw, 20px);
+    font-size: max(min(4vw, 4vh),20px);
+}
+
+#div_all{
+    margin-top: 10vh!important;
+    padding-top: 4vh!important;
+    margin-bottom: 7vh!important;
+    padding-bottom: 4vh!important;
 }
 
 h2{
-    font-size: max(3vw, 20px);
+    font-size: max(min(4vw, 4vh),20px);
 }
 
 
@@ -52,6 +59,7 @@ main{
     background-size: cover;
     position:fixed;
     height: 100vh;
+    padding-top: 20vh!important;
 }
 
 .modal-dialog {
