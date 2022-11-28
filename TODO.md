@@ -14,11 +14,7 @@
     - [ ] Image processing
 - [ ] Integrazione predizione da modello in API Flask
 - [ ] Valutazione generale performance 
-- [ ] Migliorie grafiche 
-    - [ ] CSS
-    - [ ] Header e JS 
 - [ ] Migliorie webapp
-    - [ ] Gestione login
     - [ ] Gestione nuovi dati 
     - [ ] Gestione training continuativo
 
@@ -28,3 +24,8 @@
 - [x]  Work Breakdown Structure
 - [x]  Costruire app Flask
 - [x]  Costruire prototipo API bloccata
+- [x] Migliorie grafiche 
+    - [x] CSS
+    - [x] Header e JS 
+- [x] Gestione login
+- [x] App mobile
