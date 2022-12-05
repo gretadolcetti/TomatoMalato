@@ -5,6 +5,10 @@ import random
 import json
 import hashlib
 from flask_login import *
+import torch
+from torchvision import transforms
+from PIL import Image
+
 
 # UPLOAD_FOLDER: where to save the uploaded files (temporarily?)
 UPLOAD_FOLDER = os.path.join(".","static","uploads")
@@ -26,6 +30,40 @@ users = {'tomato@malato.it': {'password': 'password'}}
 class User(UserMixin):
     pass
 
+def predict_image(image_path):
+    # Load the model
+    model = torch.load("../Dataset/resnet18_model.pt")
+    model.eval()
+
+    transform = transforms.Compose([
+        transforms.Resize(255),
+        transforms.CenterCrop(125),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
+
+    # Load the image
+    img = Image.open(image_path)
+    # Apply the transformations
+    img = transform(img)
+    # Create a batch of 1
+    img = torch.unsqueeze(img, 0)
+
+    class_names = ["Bacterial_spot",
+                     "Early_blight",
+                     "Late_blight",
+                     "Leaf_Mold",
+                     "Septoria_leaf_spot",
+                     "Spider_mites Two-spotted_spider_mite",
+                     "Target_Spot",
+                     "Tomato_Yellow_Leaf_Curl_Virus",
+                     "Tomato_mosaic_virus",
+                     "healthy"]
+    # Predict
+    prediction = model(img)
+    _, preds = torch.max(prediction, 1)
+
+    return class_names[preds]
 
 @login_manager.user_loader
 def user_loader(email):
@@ -112,7 +150,7 @@ def upload_file():
                 images_hash[img_key] = file.filename
                 with open(os.path.join(uploads_folder_path,"images_hash.json"), "w") as f:
                     f.write(json.dumps(images_hash))
-            risultato = random.choice(["sana", "affetta da A", "affetta da B", "affetta da C"])
+            risultato = predict_image(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
             return render_template('upload.html', name=os.path.join(app.config['UPLOAD_FOLDER'], img_name), risultato=risultato)
         elif file and not allowed_file(file.filename):
             flash('Estensione non ammessa')
