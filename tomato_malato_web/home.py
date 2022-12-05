@@ -49,16 +49,20 @@ def predict_image(image_path):
     # Create a batch of 1
     img = torch.unsqueeze(img, 0)
 
-    class_names = ["Bacterial_spot",
-                     "Early_blight",
-                     "Late_blight",
-                     "Leaf_Mold",
-                     "Septoria_leaf_spot",
-                     "Spider_mites Two-spotted_spider_mite",
-                     "Target_Spot",
-                     "Tomato_Yellow_Leaf_Curl_Virus",
-                     "Tomato_mosaic_virus",
-                     "healthy"]
+    class_names = [
+        "Macchia fogliare batterica",
+        "Peronospora precoce",
+        "Peronospora tardiva",
+        "Muffa fogliare",
+        "Macchia fogliare della Septoria",
+        "Ragnetto rosso",
+        "Macchia target",
+        "Virus dell'arricciamento fogliare giallo"
+        "Virus del mosaico",
+        "Sano",
+        "Muffa polverosa"
+    ]
+
     # Predict
     prediction = model(img)
     _, preds = torch.max(prediction, 1)
