@@ -50,24 +50,27 @@ def predict_image(image_path):
     img = torch.unsqueeze(img, 0)
 
     class_names = [
-        "Macchia fogliare batterica",
-        "Peronospora precoce",
-        "Peronospora tardiva",
-        "Muffa fogliare",
-        "Macchia fogliare della Septoria",
-        "Ragnetto rosso",
-        "Macchia target",
-        "Virus dell'arricciamento fogliare giallo"
-        "Virus del mosaico",
-        "Sano",
-        "Muffa polverosa"
+        "macchia fogliare batterica",
+        "peronospora precoce",
+        "peronospora tardiva",
+        "muffa fogliare",
+        "macchia fogliare della Septoria",
+        "ragnetto rosso",
+        "macchia target",
+        "virus dell'arricciamento fogliare giallo",
+        "virus del mosaico",
+        "sano",
+        "muffa polverosa"
     ]
 
     # Predict
     prediction = model(img)
     _, preds = torch.max(prediction, 1)
 
-    return class_names[preds]
+    if class_names[preds] != "Sano":
+        return "affetta da " + class_names[preds]
+    else:
+        return "sana"
 
 @login_manager.user_loader
 def user_loader(email):
