@@ -26,6 +26,46 @@
         id.style.display = 'none';
         id.style.opacity = '0';
       }
+
+      function send_request_image(){
+          const formData = new FormData();
+          //formData.append('file', )
+          //console.log(base64ToBlob(localStorage.getItem('imgData')))
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/home", true)
+          xhr.setRequestHeader("Content-Type", "application/json")
+          xhr.send(JSON.stringify({ data : localStorage.getItem('imgData').split(',')[1], file_type: localStorage.getItem('imgData').split(':')[1].split(';')[0].split('/')[1]}))
+      }
+
+      function base64ToBlob(base64){
+        const splitDataURI = base64.split(',')
+        const byteString = splitDataURI[0].indexOf('base64') >= 0 ? atob(splitDataURI[1]) : decodeURI(splitDataURI[1])
+        const mimeString = splitDataURI[0].split(':')[1].split(';')[0]
+
+        const ia = new Uint8Array(byteString.length)
+        for (let i = 0; i < byteString.length; i++)
+            ia[i] = byteString.charCodeAt(i)
+
+        return new Blob([ia], { type: mimeString })
+      }
+
+      document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById('file').onchange = function(event) {
+          document.getElementById('modalUpload').style.display='block'
+          document.getElementById('modalUpload').style.opacity='1'
+          
+          if(event.srcElement.files[0]){
+            var reader = new FileReader();
+            reader.onload = function(e){
+              document.getElementById('img_load').src = e.target.result;
+              localStorage.setItem("imgData", e.target.result)
+            }
+            reader.readAsDataURL(event.srcElement.files[0]);
+          }
+        }
+      })
+
+      
     </script>
 
     <title>TomatoMalato</title>
@@ -78,8 +118,7 @@
           <h1 style = "margin-bottom:2rem;" class="display-5 fw-bold" id="text_load_image">Carica l'immagine delle foglie della pianta</h1>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" id="form_insert">
               <form method=post enctype=multipart/form-data>
-                  <input type=file name=file accept=".png, .jpg, .jpeg">
-                  <button type=submit>Upload</button>
+                  <input id="file" type=file name=file accept=".png, .jpg, .jpeg">
               </form>
           </div>
 
@@ -95,7 +134,7 @@
 
           {% if name %}
 
-        <!-- Modal -->
+        <!-- Modal Deseases -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display:block; opacity:1;">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -125,6 +164,35 @@
   </div>
 
   </div>
+
+  <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalUploadLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" onclick="closeModal(document.getElementById('modalUpload'))">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="overflow-hidden" style="margin-top: 3rem;">
+            <div class="container px-5">
+                <h3>Sei sicuro di utilizzare questa immagine?</h3>
+                <img id="img_load" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="send_request_image()">Carica</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal(document.getElementById('modalUpload'))">Chiudi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 
 
   <hr class="featurette-divider">

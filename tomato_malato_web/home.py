@@ -8,6 +8,8 @@ from flask_login import *
 import torch
 from torchvision import transforms
 from PIL import Image
+import base64
+
 
 
 # UPLOAD_FOLDER: where to save the uploaded files (temporarily?)
@@ -128,12 +130,11 @@ def favicon():
 
 @app.route('/home', methods=['GET', 'POST'])
 def upload_file():
+
     if request.method == 'POST':
         # check if the post request has the file part
-        file = request.files['file']
-        if file.filename == '':
-            flash('Nessun file selezionato')
-            return render_template('upload.html')
+        image_bites = base64.decodebytes(request.json['data'].encode('ascii'))
+        image_type = request.json['file_type']
 
         uploads_folder_path = os.path.join(".","static","uploads")
         if not os.path.exists(uploads_folder_path):
@@ -145,22 +146,18 @@ def upload_file():
             images_hash_file = open(os.path.join(uploads_folder_path,"images_hash.json"), 'r')
             images_hash = images_hash_file.read()
             images_hash = json.loads(images_hash)
-        split_tup = os.path.splitext(file.filename)
-        img_key = hashlib.md5(file.read()).hexdigest()
-        img_name = img_key+split_tup[1]
-        file.seek(0)
+        img_key = hashlib.md5(image_bites).hexdigest()
+        img_name = img_key+'.'+image_type
 
-        if file and allowed_file(file.filename):
-            # Save image in the uploads folder if it is not already present
-            if img_key not in images_hash:
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
-                images_hash[img_key] = file.filename
-                with open(os.path.join(uploads_folder_path,"images_hash.json"), "w") as f:
-                    f.write(json.dumps(images_hash))
-            risultato = predict_image(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
-            return render_template('upload.html', name=os.path.join(app.config['UPLOAD_FOLDER'], img_name), risultato=risultato)
-        elif file and not allowed_file(file.filename):
-            flash('Estensione non ammessa')
-            return render_template('upload.html')
+
+        # Save image in the uploads folder if it is not already present
+        if img_key not in images_hash:
+            with open(os.path.join(app.config['UPLOAD_FOLDER'], img_name), 'wb') as f:
+                f.write(image_bites)
+            with open(os.path.join(uploads_folder_path,"images_hash.json"), "w") as f:
+                f.write(json.dumps(images_hash))
+        risultato = predict_image(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
+        return render_template('upload.html', name=os.path.join(app.config['UPLOAD_FOLDER'], img_name), risultato=risultato)
+
     else:
          return render_template('upload.html')
