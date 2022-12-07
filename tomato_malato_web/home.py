@@ -32,7 +32,7 @@ class User(UserMixin):
 
 def predict_image(image_path):
     # Load the model
-    model = torch.load("../Dataset/resnet18_model.pt")
+    model = torch.load("../resnet18_model.pt")
     model.eval()
 
     transform = transforms.Compose([
