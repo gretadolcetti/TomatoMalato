@@ -34,7 +34,21 @@
           var xhr = new XMLHttpRequest();
           xhr.open("POST", "/home", true)
           xhr.setRequestHeader("Content-Type", "application/json")
+          xhr.onreadystatechange = () => { // Call a function when the state changes.
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+              closeModal(document.getElementById('modalUpload'))
+              console.log(xhr.responseText)
+              response_json = JSON.parse(xhr.responseText)
+              if (response_json.name && response_json.risultato) {
+                document.getElementById('exampleModalCenter').style.display='block'
+                document.getElementById('exampleModalCenter').style.opacity='1'
+                document.getElementById('img_disease').src = response_json.name
+                document.getElementById("type_disease").innerHTML = "La pianta è "+response_json.risultato
+              }
+            }
+          }
           xhr.send(JSON.stringify({ data : localStorage.getItem('imgData').split(',')[1], file_type: localStorage.getItem('imgData').split(':')[1].split(';')[0].split('/')[1]}))
+          console.log("fine send request")
       }
 
       function base64ToBlob(base64){
@@ -48,9 +62,33 @@
 
         return new Blob([ia], { type: mimeString })
       }
+ 
 
       document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById('load_button').onclick = function(event){
+          
+          document.getElementById('modalUpload').style.display='block'
+          document.getElementById('modalUpload').style.opacity='1'
+
+          console.log(document.getElementById("file").files[0])
+
+          
+          if(document.getElementById("file").files[0]){
+              var reader = new FileReader();
+              reader.onload = function(e){
+                document.getElementById('img_load').src = e.target.result;
+                localStorage.setItem("imgData", e.target.result)
+              }
+              reader.readAsDataURL(document.getElementById("file").files[0]);
+          } 
+
+        }
+    })
+
+
+      /* document.addEventListener("DOMContentLoaded", function(){
         document.getElementById('file').onchange = function(event) {
+          console.log("sono qui")
           document.getElementById('modalUpload').style.display='block'
           document.getElementById('modalUpload').style.opacity='1'
           
@@ -63,7 +101,7 @@
             reader.readAsDataURL(event.srcElement.files[0]);
           }
         }
-      })
+      }) */
 
       
     </script>
@@ -111,17 +149,23 @@
 
   <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="insert">
 
-  <div>
-      <h1 class = "display-1" id="title">Tomato Malato</h1>
-  </div>
+      <div>
+          <h1 class = "display-1" id="title">Tomato Malato</h1>
+      </div>
       <div class="px-4 py-5 my-5 text-center" id="div_all">
           <h1 style = "margin-bottom:2rem;" class="display-5 fw-bold" id="text_load_image">Carica l'immagine delle foglie della pianta</h1>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" id="form_insert">
-              <form method=post enctype=multipart/form-data>
+              <!-- <form id="load_form" enctype=multipart/form-data>
                   <input id="file" type=file name=file accept=".png, .jpg, .jpeg">
-              </form>
-          </div>
+                  <button type="submit">Carica</button>
+              </form> -->
+              <!--<form id="load_form" >-->
+                <input id="file" type=file name=file accept=".png, .jpg, .jpeg">
+                <button id="load_button" > Carica </button>
+              <!--</form>-->
 
+          </div>
+          
           {% with message = get_flashed_messages() %}
           {% if message %}
               <ul class=flashes>
@@ -132,64 +176,62 @@
           {% endif %}
           {% endwith %}
 
-          {% if name %}
+          <!-- Modal Deseases -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Result</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" onclick="closeModal(document.getElementById('exampleModalCenter'))">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
 
-        <!-- Modal Deseases -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display:block; opacity:1;">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Result</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" onclick="closeModal(document.getElementById('exampleModalCenter'))">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+                  <div class="overflow-hidden" style="margin-top: 3rem;">
+                    <div class="container px-5">
+                        <h3 id="type_disease"></h3>
+                        <img id="img_disease" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+                    </div>
+                  </div>
 
-          <div class="overflow-hidden" style="margin-top: 3rem;">
-            <div class="container px-5">
-                <h3>L'immagine contiene una pianta {{risultato}}</h3>
-                <img src="{{name}}" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal(document.getElementById('exampleModalCenter'))">Close</button>
+                </div>
+              </div>
             </div>
           </div>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal(document.getElementById('exampleModalCenter'))">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-          {% endif %}
-  </div>
-
-  </div>
-
-  <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalUploadLongTitle"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" onclick="closeModal(document.getElementById('modalUpload'))">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <div class="overflow-hidden" style="margin-top: 3rem;">
-            <div class="container px-5">
-                <h3>Sei sicuro di utilizzare questa immagine?</h3>
-                <img id="img_load" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+        <!--Modal load-->  
+        <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalUploadLongTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" onclick="closeModal(document.getElementById('modalUpload'))">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+      
+                <div class="overflow-hidden" style="margin-top: 3rem;">
+                  <div class="container px-5">
+                      <h3>Sei sicuro di utilizzare questa immagine?</h3>
+                      <img id="img_load" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+                  </div>
+                </div>
+      
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="send_request_image()">Carica</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal(document.getElementById('modalUpload'))">Chiudi</button>
+              </div>
             </div>
           </div>
+        </div>
+  </div>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="send_request_image()">Carica</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal(document.getElementById('modalUpload'))">Chiudi</button>
-        </div>
-      </div>
-    </div>
   </div>
 
   

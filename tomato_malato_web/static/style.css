@@ -95,3 +95,9 @@ main{
     background-color: #800102;
     padding: 10%;
 }
+
+#img_load, #img_disease{
+    width: 100%;
+    max-width: 250px;
+    min-width: 100px;
+}
