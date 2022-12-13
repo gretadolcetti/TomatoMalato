@@ -2,4 +2,4 @@
 __pycache__/*
 *.pyc
 Dataset/
-tomato_malato_web/static/uploads/*
+tomato_malato_web/static/uploads
