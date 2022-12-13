@@ -42,6 +42,11 @@
               if (response_json.name && response_json.risultato) {
                 document.getElementById('exampleModalCenter').style.display='block'
                 document.getElementById('exampleModalCenter').style.opacity='1'
+                document.getElementById("btn_go_disease").style.visibility='visible'
+                console.log(response_json.risultato)
+                if (response_json.risultato == "sana"){
+                  document.getElementById("btn_go_disease").style.visibility='hidden'
+                }
                 document.getElementById('img_disease').src = response_json.name
                 document.getElementById("type_disease").innerHTML = "La pianta è "+response_json.risultato
               }
@@ -63,6 +68,23 @@
         return new Blob([ia], { type: mimeString })
       }
  
+
+      function go_correct_disease(){
+        
+        text_disease = document.getElementById('type_disease').textContent.split("da ")[1].toLowerCase()
+        console.log(text_disease)
+        for (let i = 1; i <= 10 ; i++) {
+          
+          text_dis_title = document.getElementById("d"+i).getElementsByClassName("text-muted")[0].innerText.toLowerCase()
+          console.log(text_dis_title)
+          if(text_dis_title == text_disease){
+            closeModal(document.getElementById('exampleModalCenter'))
+            document.getElementById("d"+i).scrollIntoView();
+            break
+          }
+        }
+
+      }
 
       document.addEventListener("DOMContentLoaded", function(){
         document.getElementById('load_button').onclick = function(event){
@@ -160,8 +182,8 @@
                   <button type="submit">Carica</button>
               </form> -->
               <!--<form id="load_form" >-->
-                <input id="file" type=file name=file accept=".png, .jpg, .jpeg">
-                <button id="load_button" > Carica </button>
+                <input class="btn btn-secondary" id="file" type=file name=file accept=".png, .jpg, .jpeg">
+                <button class="btn btn-secondary" id="load_button" > Carica </button>
               <!--</form>-->
 
           </div>
@@ -192,6 +214,8 @@
                     <div class="container px-5">
                         <h3 id="type_disease"></h3>
                         <img id="img_disease" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+                        <br>
+                        <button class="btn btn-secondary" id="btn_go_disease" onclick="go_correct_disease()">Visualizza informazioni</button>
                     </div>
                   </div>
 
@@ -473,7 +497,7 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading"> <span class="text-muted">Muffa delle foglie</span></h2>
+        <h2 class="featurette-heading"> <span class="text-muted">Muffa fogliare</span></h2>
         <p class="lead">
           <ul>
             <li>Sintomi di danno: <br>

@@ -69,7 +69,7 @@ def predict_image(image_path):
     prediction = model(img)
     _, preds = torch.max(prediction, 1)
 
-    if class_names[preds] != "Sano":
+    if class_names[preds] != "sano":
         return "affetta da " + class_names[preds]
     else:
         return "sana"
@@ -153,13 +153,13 @@ def upload_file():
 
         # Save image in the uploads folder if it is not already present
         if img_key not in images_hash:
+            images_hash.update({img_key: image_type})
             with open(os.path.join(app.config['UPLOAD_FOLDER'], img_name), 'wb') as f:
                 f.write(image_bites)
             with open(os.path.join(uploads_folder_path,"images_hash.json"), "w") as f:
                 f.write(json.dumps(images_hash))
+        print(images_hash)
         risultato = predict_image(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
-        print(risultato)
-        print(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
         #return render_template('upload.html', name=os.path.join(app.config['UPLOAD_FOLDER'], img_name), risultato=risultato)
         data = {"name" : os.path.join(app.config['UPLOAD_FOLDER'], img_name), "risultato" : risultato}
         return json.dumps(data)
