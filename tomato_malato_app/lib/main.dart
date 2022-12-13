@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
           appBar: null,
           body: MyWebView(
                     title: "Tomato Malato",
-                    selectedUrl: "http://10.0.2.2:5000",
+                    selectedUrl: "http://18.102.4.253",
+                    //selectedUrl: "http://10.0.2.2:5000",
         )
         )
       )
