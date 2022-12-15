@@ -26,8 +26,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-# Our mock database.
-users = {'tomato@malato.it': {'password': 'password'}}
 
 class User(UserMixin):
     pass
@@ -73,6 +71,17 @@ def predict_image(image_path):
         return "affetta da " + class_names[preds]
     else:
         return "sana"
+
+def load_passwords() :
+    passwords = {}
+    uploads_folder_path = os.path.join(".","static","users_passwords")
+    passwords_file = open(os.path.join(uploads_folder_path,"passwords.json"), 'r')
+    passwords = passwords_file.read()
+    passwords = json.loads(passwords)
+    return passwords
+
+# Our mock database.
+users = load_passwords()
 
 @login_manager.user_loader
 def user_loader(email):
