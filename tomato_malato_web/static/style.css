@@ -3,7 +3,8 @@
 }
 
 #title{
-    color: #800102!important;
+    /*color: #800102!important;*/
+    color: #e9ecef!important;
     text-align: center;
     font-family: "Lucida Console";
     font-size: max(min(14vh, 14vw),50px);
@@ -11,6 +12,7 @@
 
 #text_load_image{
     font-size: max(min(4vw, 4vh),20px);
+    color: #e9ecef!important;
 }
 
 #div_all{
@@ -54,12 +56,15 @@ main{
 }
 
 #insert{
-    background-image: url("img/pomodori.jpg");
+    /* background-image: url("img/pomodori.jpg"); */
+    background-color: red; /* For browsers that do not support gradients */
+    background-image: url("../static/img/pianta2.png"), linear-gradient(to top, rgb(242, 242, 242), #800102);
+    background-size: auto 80vh, cover;
+    background-position: left, center;
     background-repeat: no-repeat;
-    background-size: cover;
     position:fixed;
     height: 100vh;
-    padding-top: 20vh!important;
+    padding-top: 30vh!important;
 }
 
 .modal-dialog {

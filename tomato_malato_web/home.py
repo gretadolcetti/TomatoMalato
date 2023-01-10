@@ -9,6 +9,7 @@ import torch
 from torchvision import transforms
 from PIL import Image
 import base64
+import torch.nn.functional as nnf
 
 
 
@@ -65,12 +66,29 @@ def predict_image(image_path):
 
     # Predict
     prediction = model(img)
-    _, preds = torch.max(prediction, 1)
 
-    if class_names[preds] != "sano":
+    probs, preds = torch.max(prediction, 1)
+    sorted, indices = torch.sort(prediction)
+    
+
+    indices = indices.numpy()[0]
+    sorted = sorted.detach().numpy()[0]
+    total = sum(sorted)
+
+    """ print(class_names[indices[8]])
+    print(sorted[8]/total*100)
+    print(class_names[indices[9]])
+    print(sorted[9]/total*100)
+    print(class_names[indices[10]])
+    print(sorted[10]/total*100) """
+    top3 = [class_names[indices[10]],class_names[indices[9]],class_names[indices[8]]]
+    top3_probs = [sorted[10]/total*100, sorted[9]/total*100, sorted[8]/total*100]
+
+    """ if class_names[preds] != "sano":
         return "affetta da " + class_names[preds]
     else:
-        return "sana"
+        return "sana" """
+    return top3, top3_probs
 
 def load_passwords() :
     passwords = {}
@@ -141,7 +159,6 @@ def favicon():
 def upload_file():
 
     if request.method == 'POST':
-        print("chiesto POST")
         # check if the post request has the file part
         image_bites = base64.decodebytes(request.json['data'].encode('ascii'))
         image_type = request.json['file_type']
@@ -167,11 +184,11 @@ def upload_file():
                 f.write(image_bites)
             with open(os.path.join(uploads_folder_path,"images_hash.json"), "w") as f:
                 f.write(json.dumps(images_hash))
-        print(images_hash)
-        risultato = predict_image(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
+        #risultato = predict_image(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
         #return render_template('upload.html', name=os.path.join(app.config['UPLOAD_FOLDER'], img_name), risultato=risultato)
-        data = {"name" : os.path.join(app.config['UPLOAD_FOLDER'], img_name), "risultato" : risultato}
+        #data = {"name" : os.path.join(app.config['UPLOAD_FOLDER'], img_name), "risultato" : risultato}
+        ris, probs = predict_image(os.path.join(app.config['UPLOAD_FOLDER'], img_name))
+        data = {"name" : os.path.join(app.config['UPLOAD_FOLDER'], img_name), "risultato" : ris, "probabilities" : probs}
         return json.dumps(data)
     else:
-        print("chiesto GET")
         return render_template('upload.html')

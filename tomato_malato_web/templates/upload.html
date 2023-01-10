@@ -25,6 +25,8 @@
       function closeModal(id) {
         id.style.display = 'none';
         id.style.opacity = '0';
+        document.getElementById("modal-fade").style.visibility = 'hidden'
+        document.getElementById('body').style.overflow = 'auto'
       }
 
       function send_request_image(){
@@ -38,15 +40,24 @@
               console.log(xhr.responseText)
               response_json = JSON.parse(xhr.responseText)
               if (response_json.name && response_json.risultato) {
-                document.getElementById('exampleModalCenter').style.display='block'
-                document.getElementById('exampleModalCenter').style.opacity='1'
-                document.getElementById("btn_go_disease").style.visibility='visible'
-                console.log(response_json.risultato)
-                if (response_json.risultato == "sana"){
-                  document.getElementById("btn_go_disease").style.visibility='hidden'
-                }
+                document.getElementById("modal-fade").style.visibility = 'visible'
+                document.getElementById('exampleModalLong').style.display='block'
+                document.getElementById('exampleModalLong').style.opacity='1'
+                document.getElementById('body').style.overflow = 'hidden'
+                document.getElementById('exampleModalLong').style.overflowY = 'auto'
                 document.getElementById('img_disease').src = response_json.name
-                document.getElementById("type_disease").innerHTML = "La pianta è "+response_json.risultato
+                for(let i = 0; i <= response_json.risultato.length-1 ; i++) {
+                  if (response_json.risultato[i] == "sana"){
+                    document.getElementById("btn_go_disease"+i).style.visibility='visible'
+                    document.getElementById("type_disease"+i).innerHTML = "La pianta è"+response_json.risultato[i]
+                    document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
+                    document.getElementById("btn_go_disease"+i).style.visibility='hidden'
+                  } else {
+                    document.getElementById("type_disease"+i).innerHTML = "La pianta è affetta da "+response_json.risultato[i]
+                    document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
+                  }
+                }
+                
               }
             }
           }
@@ -67,16 +78,16 @@
       }
  
 
-      function go_correct_disease(){
+      function go_correct_disease(index){
         
-        text_disease = document.getElementById('type_disease').textContent.split("da ")[1].toLowerCase()
+        text_disease = document.getElementById('type_disease'+index).textContent.split("da ")[1].toLowerCase()
         console.log(text_disease)
         for (let i = 1; i <= 10 ; i++) {
           
           text_dis_title = document.getElementById("d"+i).getElementsByClassName("text-muted")[0].innerText.toLowerCase()
           console.log(text_dis_title)
           if(text_dis_title == text_disease){
-            closeModal(document.getElementById('exampleModalCenter'))
+            closeModal(document.getElementById('exampleModalLong'))
             document.getElementById("d"+i).scrollIntoView();
             break
           }
@@ -89,6 +100,8 @@
           
           document.getElementById('modalUpload').style.display='block'
           document.getElementById('modalUpload').style.opacity='1'
+          document.getElementById("modal-fade").style.visibility = 'visible'
+          document.getElementById('body').style.overflow = 'hidden'
           
           console.log(document.getElementById("file").files[0])
           
@@ -114,7 +127,7 @@
 
     <title>TomatoMalato</title>
 </head>
-<body>
+<body id="body">
 
   <!--Header-->
   <header class="site-header sticky-top py-1">
@@ -154,7 +167,7 @@
   <main>
 
   <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="insert">
-
+    <!-- <img src = "../static/img/pianta.png"> -->
       <div>
           <h1 class = "display-1" id="title">Tomato Malato</h1>
       </div>
@@ -183,29 +196,38 @@
           {% endwith %}
 
           <!-- Modal Deseases -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 15%">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLongTitle">Result</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" onclick="closeModal(document.getElementById('exampleModalCenter'))">&times;</span>
+                    <span aria-hidden="true" onclick="closeModal(document.getElementById('exampleModalLong'))">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
 
                   <div class="overflow-hidden" style="margin-top: 3rem;">
                     <div class="container px-5">
-                        <h3 id="type_disease"></h3>
                         <img id="img_disease" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
                         <br>
-                        <button class="btn btn-secondary" id="btn_go_disease" onclick="go_correct_disease()">Visualizza informazioni</button>
+                        <h5 id="type_disease0"></h5>
+                        <h5 id="prob0"></h5>
+                        <button class="btn btn-secondary" id="btn_go_disease0" onclick="go_correct_disease(0)">Visualizza informazioni</button>
+                        <br>
+                        <h5 id="type_disease1"></h5>
+                        <h5 id="prob1"></h5>
+                        <button class="btn btn-secondary" id="btn_go_disease1" onclick="go_correct_disease(1)">Visualizza informazioni</button>
+                        <br>
+                        <h5 id="type_disease2"></h5>
+                        <h5 id="prob2"></h5>
+                        <button class="btn btn-secondary" id="btn_go_disease2" onclick="go_correct_disease(2)">Visualizza informazioni</button>
                     </div>
                   </div>
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal(document.getElementById('exampleModalCenter'))">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal(document.getElementById('exampleModalLong'))">Close</button>
                 </div>
               </div>
             </div>
@@ -785,5 +807,6 @@
     </div>
   </footer>
   <!-- Footer -->
+  <div id = "modal-fade" class="modal-backdrop fade show" style = "visibility:hidden"></div>
 
 </body>
