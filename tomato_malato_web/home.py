@@ -44,7 +44,7 @@ def predict_image(image_path):
     ])
 
     # Load the image
-    img = Image.open(image_path)
+    img = Image.open(image_path).convert('RGB')
     # Apply the transformations
     img = transform(img)
     # Create a batch of 1
