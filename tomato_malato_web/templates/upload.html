@@ -46,18 +46,26 @@
                 document.getElementById('body').style.overflow = 'hidden'
                 document.getElementById('exampleModalLong').style.overflowY = 'auto'
                 document.getElementById('img_disease').src = response_json.name
-                for(let i = 0; i <= response_json.risultato.length-1 ; i++) {
+                /*for(let i = 0; i <= response_json.risultato.length-1 ; i++) {
                   if (response_json.risultato[i] == "sana"){
-                    document.getElementById("btn_go_disease"+i).style.visibility='visible'
-                    document.getElementById("type_disease"+i).innerHTML = "La pianta è"+response_json.risultato[i]
+                    document.getElementById("type_disease"+i).innerHTML = "La pianta è "+response_json.risultato[i]
                     //document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
                     document.getElementById("btn_go_disease"+i).style.visibility='hidden'
                   } else {
+                    document.getElementById("btn_go_disease"+i).style.visibility='visible'
                     document.getElementById("type_disease"+i).innerHTML = "La pianta è affetta da "+response_json.risultato[i]
                     //document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
                   }
-                }
-                
+                }*/
+                if (response_json.risultato[0] == "sana"){
+                    document.getElementById("type_disease"+0).innerHTML = "La pianta è "+response_json.risultato[0]
+                    //document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
+                    document.getElementById("btn_go_disease"+0).style.visibility='hidden'
+                  } else {
+                    document.getElementById("btn_go_disease"+0).style.visibility='visible'
+                    document.getElementById("type_disease"+0).innerHTML = "La pianta è affetta da "+response_json.risultato[0]
+                    //document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
+                  }
               }
             }
           }
@@ -209,19 +217,19 @@
 
                   <div class="overflow-hidden" style="margin-top: 3rem;">
                     <div class="container px-5">
-                        <img id="img_disease" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
+                        <img id="img_disease" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50vw">
                         <br>
-                        <h5 id="type_disease0"></h5>
+                        <h3 id="type_disease0"></h5>
                         <!--<h5 id="prob0"></h5>-->
                         <button class="btn btn-secondary" id="btn_go_disease0" onclick="go_correct_disease(0)">Visualizza informazioni</button>
-                        <br>
-                        <h5 id="type_disease1"></h5>
-                        <!-- <h5 id="prob1"></h5> -->
+                        <!--<br>
+                        <h4 id="type_disease1"></h5>
+                        <h5 id="prob1"></h5> 
                         <button class="btn btn-secondary" id="btn_go_disease1" onclick="go_correct_disease(1)">Visualizza informazioni</button>
                         <br>
                         <h5 id="type_disease2"></h5>
-                        <!-- <h5 id="prob2"></h5> -->
-                        <button class="btn btn-secondary" id="btn_go_disease2" onclick="go_correct_disease(2)">Visualizza informazioni</button>
+                        <h5 id="prob2"></h5>
+                        <button class="btn btn-secondary" id="btn_go_disease2" onclick="go_correct_disease(2)">Visualizza informazioni</button>-->
                     </div>
                   </div>
 

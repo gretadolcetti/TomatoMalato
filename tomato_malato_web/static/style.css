@@ -68,7 +68,8 @@ main{
 }
 
 .modal-dialog {
-    max-width: 80%;
+    width: 80vw;
+    min-width: 50vw;
     margin: 1.75rem auto;
 }
 

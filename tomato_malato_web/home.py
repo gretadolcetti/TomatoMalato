@@ -60,7 +60,7 @@ def predict_image(image_path):
         "macchia target",
         "virus dell'arricciamento fogliare giallo",
         "virus del mosaico",
-        "sano",
+        "sana",
         "muffa polverosa"
     ]
 
