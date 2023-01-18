@@ -50,11 +50,11 @@
                   if (response_json.risultato[i] == "sana"){
                     document.getElementById("btn_go_disease"+i).style.visibility='visible'
                     document.getElementById("type_disease"+i).innerHTML = "La pianta è"+response_json.risultato[i]
-                    document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
+                    //document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
                     document.getElementById("btn_go_disease"+i).style.visibility='hidden'
                   } else {
                     document.getElementById("type_disease"+i).innerHTML = "La pianta è affetta da "+response_json.risultato[i]
-                    document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
+                    //document.getElementById("prob"+i).innerHTML = "con probabilità del "+response_json.probabilities[i]+"%"
                   }
                 }
                 
@@ -197,7 +197,7 @@
 
           <!-- Modal Deseases -->
           <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 15%">
+            <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 15vh">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLongTitle">Result</h5>
@@ -212,15 +212,15 @@
                         <img id="img_disease" class="img-fluid border rounded-3 shadow-lg mb-4" style="width: 50%">
                         <br>
                         <h5 id="type_disease0"></h5>
-                        <h5 id="prob0"></h5>
+                        <!--<h5 id="prob0"></h5>-->
                         <button class="btn btn-secondary" id="btn_go_disease0" onclick="go_correct_disease(0)">Visualizza informazioni</button>
                         <br>
                         <h5 id="type_disease1"></h5>
-                        <h5 id="prob1"></h5>
+                        <!-- <h5 id="prob1"></h5> -->
                         <button class="btn btn-secondary" id="btn_go_disease1" onclick="go_correct_disease(1)">Visualizza informazioni</button>
                         <br>
                         <h5 id="type_disease2"></h5>
-                        <h5 id="prob2"></h5>
+                        <!-- <h5 id="prob2"></h5> -->
                         <button class="btn btn-secondary" id="btn_go_disease2" onclick="go_correct_disease(2)">Visualizza informazioni</button>
                     </div>
                   </div>
@@ -550,23 +550,18 @@
       <div class="col-md-7">
         <h2 class="featurette-heading"> <span class="text-muted">Muffa polverosa</span></h2>
         <p class="lead">
-          <ul>
-            <li>Sintomi di danno: <br>
-              <ul>
-                <li></li>
-                <li></li>
-              </ul>
-          <li>Sopravvivenza e diffusione: <br>
-            <ul>
-              <li>Primaria: </li>
-              <li>Secondaria: </li>
-            </ul>
+        <ul>
+          <li>Descrizione: <br>
+              L'oidio del pomodoro inizia con macchie giallo pallido sulle foglie. Le macchie si ricoprono presto di spore bianche, facendo sembrare le foglie spolverate di farina. Con l'avanzare di questa malattia fungina, le parti biancastre delle foglie diventano marroni e raggrinziscono, diventando secche e fragili. L'oidio si manifesta soprattutto alla fine dell'estate. Le piante vecchie e stressate sono più suscettibili di quelle giovani e sane.
           </li>
-
-          <li>Condizioni favorevoli: <br>
-            <ul>
-              <li></li>
-            </ul>
+          <li>Danni: <br>
+              Ifunghi dell'oidio ostruiscono i pori delle foglie e bloccano la luce alle cellule fotosintetiche, indebolendo la capacità delle piante di utilizzare la luce come fonte di energia. La nuova crescita si arresta, le foglie vecchie cadono e le piante faticano a sopravvivere. I frutti prodotti dalle piante infette spesso mancano di sapore.
+          </li>
+          <li>Prevenzione dei problemi: <br>
+            L'oidio del pomodoro è più probabile che si sviluppi su piante stressate, per cui è bene fornire nutrimento, acqua e pacciamatura in abbondanza per soddisfare le loro esigenze. Se l'oidio del pomodoro è comune nelle vostre zone, spruzzate le piante in via preventiva con una miscela di una parte di latte e cinque parti di acqua ogni settimana, a partire dalla metà dell'estate.
+          </li>
+          <li>Gestione dei focolai: <br>
+            Eliminate le singole foglie che presentano l'oidio non appena le vedete. Raccogliere tempestivamente i pomodori dalle piante ammuffite. Compostate le vecchie piante di pomodoro in un cumulo di compost attivo, in modo che tutto il materiale vegetale infetto sia eliminato entro l'estate successiva.
           </li>
         </ul>
         </p>
@@ -591,21 +586,29 @@
         <h2 class="featurette-heading"> <span class="text-muted">Macchia fogliare della Septoria</span></h2>
         <p class="lead">
           <ul>
-            <li>Sintomi di danno: <br>
-              <ul>
-                <li></li>
-                <li></li>
-              </ul>
+          <li>Sintomi di danno: <br>
+            <ul>
+              <li>Di solito sono colpite le piante meno vigorose</li>
+              <li>Piccole macchie, da rotonde a irregolari, con centro grigio e margine scuro sulle foglie.</li>
+              <li>Le macchie iniziano di solito sulle foglie più basse e avanzano gradualmente verso l'alto</li>
+              <li>Le macchie si espandono e le foglie si ammalano.</li>
+              <li>Defogliazione completa delle foglie colpite</li>
+              <li>Talvolta vengono attaccati steli e fiori</li>
+              <li>I frutti sono raramente attaccati</li>
+            </ul>
+          </li>
           <li>Sopravvivenza e diffusione: <br>
             <ul>
-              <li>Primaria: </li>
-              <li>Secondaria: </li>
+              <li>Primaria: micelio o conidi in picnidi in detriti vegetali infetti o su erbacce solanacee.</li>
+              <li>Secondaria: conidi attraverso gli spruzzi di pioggia o il vento e anche attraverso i conidi viscidi che si attaccano alle mani e agli indumenti di chi raccoglie i pomodori.</li>
             </ul>
           </li>
 
           <li>Condizioni favorevoli: <br>
             <ul>
-              <li></li>
+              <li>Scarso vigore delle piante per carenza di nutrienti o a stagione inoltrata</li>
+              <li>Elevata umidità o rugiada persistente a 25 °C</li>
+              <li>Tempo umido con piogge intermittenti.</li>
             </ul>
           </li>
         </ul>
@@ -630,23 +633,17 @@
       <div class="col-md-7">
         <h2 class="featurette-heading"> <span class="text-muted">Ragnetto rosso</span></h2>
         <p class="lead">
-          <ul>
-            <li>Sintomi di danno: <br>
+        <ul>
+          <li>Sintomi di danno: <br>
               <ul>
-                <li></li>
-                <li></li>
+                <li>L'alimentazione del ragnetto rosso omato provoca lo sbiancamento o l'ingiallimento delle foglie, che poi si seccano e infine cadono.</li>
+                <li>In caso di attacchi gravi, i danni alle piante progrediscono molto rapidamente e gli ospiti possono morire entro 3-5 settimane, se non si adottano misure di gestione.</li>
+                <li>Nelle infestazioni meno intense, la parte superiore delle foglie appare macchiata, a causa del risucchio del contenuto delle singole cellule vegetali da parte degli acari. Questo può ridurre il tasso di crescita delle piante e può avere un impatto negativo sulla salute e sulla resa del raccolto.</li>
+                <li>Se presenti in numero ridotto, le infestazioni di ragnetto rosso del pomodoro possono non produrre alcun sintomo. Quando le popolazioni aumentano, i danni alle piante sono più facilmente visibili sulle foglie.</li>
               </ul>
-          <li>Sopravvivenza e diffusione: <br>
-            <ul>
-              <li>Primaria: </li>
-              <li>Secondaria: </li>
-            </ul>
           </li>
-
-          <li>Condizioni favorevoli: <br>
-            <ul>
-              <li></li>
-            </ul>
+          <li>Prevenzione: <br>
+            Il ragnetto rosso del pomodoro predilige le piante ospiti della famiglia delle solanacee. Controllate regolarmente le solanacee (capsicum, peperoncino, pomodoro, melanzana, patata) per individuare eventuali segni di danni alle foglie, quindi utilizzate una lente manuale per cercare le ninfe e gli adulti di ragnetto sul lato inferiore delle foglie.
           </li>
         </ul>
         </p>
@@ -673,19 +670,20 @@
           <ul>
             <li>Sintomi di danno: <br>
               <ul>
-                <li></li>
-                <li></li>
+                <li>I sintomi fogliari iniziali sono costituiti da macchie di dimensioni minime, impregnate d'acqua, sulla superficie superiore delle foglie.</li>
+                <li>Le macchie si sviluppano in piccole lesioni necrotiche con centro marrone chiaro e margini scuri.</li>
+                <li>Le lesioni aumentano di dimensioni e diventano circolari con il centro grigio o marrone chiaro. Man mano che le lesioni si allargano, possono sviluppare cerchi concentrici più scuri, da cui deriva il nome di macchia bersaglio.</li>
+                <li>I cerchi concentrici sono simili a quelli osservati nelle lesioni precoci della peronospora. In alcune varietà si possono formare aloni gialli intorno alle lesioni. Le lesioni possono aggregarsi, formando ampie aree di peronospora sulle foglioline, e le foglie infette possono cadere prematuramente.</li>
+                <li>Le infezioni da macchia target iniziano in genere sulle foglie più vecchie e più basse della chioma interna. Pertanto, i sintomi iniziali possono non essere notati dal coltivatore, rendendo difficile la diagnosi precoce. La malattia progredisce verso l'alto, causando la defogliazione della chioma interna, una condizione nota come "melting-out".</li>
               </ul>
-          <li>Sopravvivenza e diffusione: <br>
-            <ul>
-              <li>Primaria: </li>
-              <li>Secondaria: </li>
-            </ul>
-          </li>
+            </li>
 
-          <li>Condizioni favorevoli: <br>
+          <li>Cura e prevenzione: <br>
             <ul>
-              <li></li>
+              <li>La strategia principale utilizzata per gestire la maculatura del pomodoro è l'applicazione regolare di fungicidi.</li>
+              <li>Le applicazioni devono iniziare prima della comparsa dei sintomi, quando le condizioni sono favorevoli all'infezione e allo sviluppo della malattia.</li>
+              <li>Può essere necessario applicare i fungicidi a intervalli regolari (di solito ogni 10-14 giorni), a seconda delle indicazioni riportate sull'etichetta dei prodotti utilizzati.</li>
+              <li>Per ottenere il miglior controllo delle macchie target è necessaria una copertura completa di tutte le superfici della pianta.</li>
             </ul>
           </li>
         </ul>
@@ -713,20 +711,12 @@
           <ul>
             <li>Sintomi di danno: <br>
               <ul>
-                <li></li>
-                <li></li>
+                <li>La malattia è caratterizzata da chiazze verde chiaro e scuro sulle foglie, spesso accompagnate da appassimento delle foglie giovani nei giorni di sole quando le piante si infettano per la prima volta.</li>
+                <li>Le foglioline delle foglie colpite sono di solito distorte, arricciate e più piccole del normale. Talvolta le foglioline si presentano frastagliate, dando origine ai sintomi della "foglia di felce".</li>
+                <li>Le piante colpite appaiono stentate, di colore verde pallido e spilungone.</li>
               </ul>
           <li>Sopravvivenza e diffusione: <br>
-            <ul>
-              <li>Primaria: </li>
-              <li>Secondaria: </li>
-            </ul>
-          </li>
-
-          <li>Condizioni favorevoli: <br>
-            <ul>
-              <li></li>
-            </ul>
+            Il virus si diffonde attraverso il contatto con gli abiti, le mani della manodopera, il contatto delle piante infette con quelle sane, i detriti vegetali e gli attrezzi.
           </li>
         </ul>
         </p>
@@ -754,19 +744,26 @@
           <ul>
             <li>Sintomi di danno: <br>
               <ul>
-                <li></li>
-                <li></li>
+                <li>Arricciamento delle foglie verso l'alto, margini fogliari gialli (clorotici), foglie più piccole del normale, arresto della pianta e caduta dei fiori. </li>
+                <li>Se le piante di pomodoro vengono infettate all'inizio della loro crescita, è possibile che non si formino frutti.</li>
+                <li>Le piante infette possono comparire in modo casuale in tutto il giardino.</li>
+                <li>Anche le piante di peperone possono essere infettate, ma non mostrano sintomi.</li>
               </ul>
           <li>Sopravvivenza e diffusione: <br>
             <ul>
-              <li>Primaria: </li>
-              <li>Secondaria: </li>
+              <li>Il virus dell'arricciamento fogliare giallo del pomodoro (TYLCV) non è trasmesso dai semi, ma dalle mosche bianche.</li>  
+              <li>Questa malattia è estremamente dannosa per la resa dei frutti nelle colture di pomodori e peperoni.</li>
+              <li>Le mosche bianche possono portare la malattia nell'orto da erbe infette nelle vicinanze, come varie specie di nightshades e jimsonweed. </li>
+              <li>Dopo l'infezione, le piante di pomodoro possono rimanere asintomatiche per 2 o 3 settimane.</li>
             </ul>
           </li>
 
-          <li>Condizioni favorevoli: <br>
+          <li>Prevenzione e trattamento <br>
             <ul>
-              <li></li>
+              <li>La rimozione delle piante con i primi sintomi può rallentare la diffusione della malattia.</li>
+              <li>Le piante infette estirpate devono essere immediatamente imbustate per evitare la diffusione delle mosche bianche che si nutrono di quelle piante.</li>
+              <li>Tenere sotto controllo le erbe infestanti all'interno e intorno al giardino, perché possono essere ospiti alternativi delle mosche bianche.</li>
+              <li>È possibile utilizzare pacciamature riflettenti (alluminio o color argento) tra i filari per ridurre l'alimentazione delle mosche bianche.</li>
             </ul>
           </li>
         </ul>
@@ -795,15 +792,16 @@
         <p id="btn-nav">Tomato Malato</p>
       </div>
       <div class="col-6 col-md">
-        <h5 id="btn-nav">Features</h5>
-
+        <h5 id="btn-nav">Greta Dolcetto</h5>
+        <h5 id="btn-nav">Laura Pistore</h5>
+        <h5 id="btn-nav">Daniel Puttini</h5>
       </div>
-      <div class="col-6 col-md">
+      <!--<div class="col-6 col-md">
         <h5 id="btn-nav">Resources</h5>
       </div>
       <div class="col-6 col-md">
         <h5 id="btn-nav">About</h5>
-      </div>
+      </div>-->
     </div>
   </footer>
   <!-- Footer -->
