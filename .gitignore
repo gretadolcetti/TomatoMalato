@@ -4,3 +4,5 @@ __pycache__/*
 Dataset/
 tomato_malato_web/static/uploads
 tomato_malato_web/static/uploads/images_hash.json
+/static/uploads/images_hash.json
+runs/*
