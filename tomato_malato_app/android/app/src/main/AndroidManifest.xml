@@ -3,6 +3,9 @@
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.CAMERA"/>
    <uses-permission android:name="android.permission.GALLERY"/>
+   <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
    <application
         android:label="tomato_malato_app"
         android:name="${applicationName}"
@@ -41,7 +44,9 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
+                android:resource="@xml/provider_paths"
+                xmlns:tools="http://schemas.android.com/tools"
+                tools:replace="android:resource" />
         </provider>
     </application>
 </manifest>
